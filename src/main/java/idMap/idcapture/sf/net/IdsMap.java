@@ -4,6 +4,7 @@
 package idMap.idcapture.sf.net;
 
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * @author pierre
@@ -12,7 +13,11 @@ import java.io.Serializable;
 public interface IdsMap extends Serializable {
 
 	
+        public void loadIdRecords(Set<IdRecords> ids, String keyAttribute ) ;
+        public void loadIdKeys( Set<String> keys ) ;
+        
 	/*
+	 * ID Management
 	 * Get Records Object from Key
 	 */
 	public IdRecords getId ( String key ) ;
@@ -25,9 +30,26 @@ public interface IdsMap extends Serializable {
 	 */
 	public String addNewId ( IdRecords id );
 	
+	
 	/*
-	 * getAllRecords Attributes
+	 * Data records per Id;
 	 */
-	public String[] getAttributes();
+	
+	/*
+	 * Possible Records Attributes
+	 */
+	public Set<String> getAttributes();
+	public void setAttributes( Set<String> attributes ) ;
+	
+	/*
+	 * Attributes Profiles : subset of Record attributes
+	 */
+	public void setProfile (String profile, Set<String> attributes ) ;
+	public Set<String> getProfile(String profile) ;
+	/*
+	 * Key attribute : IdRecordAttribute used as a key
+	 */
+	public String getKeyAttribute();
+	abstract void setKeyAttribute (String keyAttribute );
 	
 }

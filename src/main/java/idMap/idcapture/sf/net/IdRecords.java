@@ -14,4 +14,6 @@ public interface IdRecords extends Serializable {
 	public Object getRecord ( String attribute ) ;
 	public void setRecord ( String attribute, Object value );
 	
+	
+	
 }
