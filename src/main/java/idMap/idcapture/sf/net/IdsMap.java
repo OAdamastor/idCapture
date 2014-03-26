@@ -4,52 +4,33 @@
 package idMap.idcapture.sf.net;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
  * @author pierre
  *
  */
-public interface IdsMap extends Serializable {
-
+public interface IdsMap 
+    extends 
+    	Map<IdKey,IdRecords>, 
+    	Serializable {
 	
-        public void loadIdRecords(Set<IdRecords> ids, String keyAttribute ) ;
-        public void loadIdKeys( Set<String> keys ) ;
-        
-	/*
-	 * ID Management
-	 * Get Records Object from Key
+	/* 
+	 * Map name used as external map reference
+	 * ( internally map reference as int index in maps list
 	 */
-	public IdRecords getId ( String key ) ;
-	public boolean existsId ( String key ) ;
-	public void addId ( String key, IdRecords id );
+	public String getName();
 	
 	/*
-	 * If auto generated key ; 
-	 * ? any interest
+	 * get Map Key Fields
 	 */
-	public String addNewId ( IdRecords id );
-	
-	
+	public List<IdField> getMapKeys();
 	/*
-	 * Data records per Id;
+	 * get All Map Fields
 	 */
+	public List<IdField> getMapFields();
 	
-	/*
-	 * Possible Records Attributes
-	 */
-	public Set<String> getAttributes();
-	public void setAttributes( Set<String> attributes ) ;
-	
-	/*
-	 * Attributes Profiles : subset of Record attributes
-	 */
-	public void setProfile (String profile, Set<String> attributes ) ;
-	public Set<String> getProfile(String profile) ;
-	/*
-	 * Key attribute : IdRecordAttribute used as a key
-	 */
-	public String getKeyAttribute();
-	abstract void setKeyAttribute (String keyAttribute );
 	
 }
