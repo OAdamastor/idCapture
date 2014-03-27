@@ -15,9 +15,9 @@ public interface IdRecords extends Serializable {
 	
 	public void setRecordValue ( IdField field, Object value, AUser user );
 	
-    public CRecord getRecord ( IdField field );
+    public CRecord<?> getRecord ( IdField field );
 	
-	public void setRecord ( IdField field, CRecord value, AUser user );
+	public void setRecord ( IdField field, CRecord<?> value, AUser user );
 	
 	/*
 	 * Reference membership of Fields to all IdsMaps, as enumerated in IdsWorld.getMapsList();
@@ -31,7 +31,8 @@ public interface IdRecords extends Serializable {
 	 * Reference storage ID to load from specific stores ( if 0, use list index from List Records ) ;
 	 * 
 	 * Should be the same sID across all storage Domains SID for one IdRecords. 
-	 *           Data record is intersection of fieldID x IdRecord sID , to be called in a storage domain SID
+	 *           Data record is intersection of fieldID x IdRecord sID , to be called within
+	 *           a (field specific) storage domain SID
 	 */
 	public int sID();
 	

@@ -12,14 +12,14 @@ import java.util.List;
  * 
  * Chain of custody enabled record 
  */
-public interface CRecord extends Serializable {
+public interface CRecord<T> extends Serializable {
 
 	/*
 	 * Base value access method.
 	 */
-	public Object getValue();
+	public T getValue();
 	
-	/*
+	/* 
 	 *  Base set value access method,
 	 *  will record in implementations all changes
 	 */

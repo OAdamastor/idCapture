@@ -7,7 +7,7 @@ public interface IdField extends Serializable {
 	/*
 	 * Data Class
 	 */
-	public Class getFieldClass();
+	public Class<?> getFieldClass();
 	
 	/*
 	 *  Field name as Key in map of Fields.
