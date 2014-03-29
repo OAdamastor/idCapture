@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author pierre
+ * @author OAdamastor
  *
  */
 public interface CRecordChange extends Serializable {

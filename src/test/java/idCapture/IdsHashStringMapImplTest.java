@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * @author pierre
+ * @author OAdamastor
  *
  */
 public class IdsHashStringMapImplTest {

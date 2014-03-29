@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author pierre
+ * @author OAdamastor
  *
  */
 public interface IdsWorld extends Serializable {
@@ -17,14 +17,13 @@ public interface IdsWorld extends Serializable {
 	 * Reference all Fields usable in a list
 	 * to qualify ids in this World
 	 */
-	public List<IdField> getFields();
+	public List<? extends IdField> getFields();
 	
 	/* 
 	 * Reference all Maps in this world of ids
 	 * Fixed order of Maps, allowing for index of map references (in IdFields Definition )
 	 */
 	public List<IdsMap> getMaps(); // should it be in public interface ?
-	public List<int[]> getMapsIndexesInRecords(); // useful public interface ?
 	
 	public List<String> getMapsNames();
 	public IdsMap getMap(int mapindex);

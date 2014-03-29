@@ -6,7 +6,7 @@ package idMap.idcapture.sf.net;
 import java.util.HashMap;
 
 /**
- * @author pierre
+ * @author OAdamastor
  *
  */
 public class IdRecordsSimpleImpl  
@@ -14,20 +14,21 @@ public class IdRecordsSimpleImpl
             implements IdRecords{
 
 	
-	int[] inMapsList ;
-	int[] keyInMapsList ;
-	int sID ;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3258977913461276703L;
+	private int[] inMapsList ;
+	private int sID ;
 	
 	/**
 	 * 
 	 */
 	public IdRecordsSimpleImpl(
 			int[] f_inMapsList,
-			int[] f_keyInMapsList,
 			int f_sID ) {
 		
 		this.inMapsList = f_inMapsList ;
-		this.keyInMapsList = f_keyInMapsList ;
 		this.sID = f_sID ;
 		
 	}
@@ -73,13 +74,6 @@ public class IdRecordsSimpleImpl
 		return this.inMapsList ;
 	}
 
-	/* (non-Javadoc)
-	 * @see idMap.idcapture.sf.net.IdRecords#isKeyInMapsList()
-	 */
-	public int[] isKeyInMapsList() {
-		
-		return this.keyInMapsList ;
-	}
 
 	/* (non-Javadoc)
 	 * @see idMap.idcapture.sf.net.IdRecords#sID()

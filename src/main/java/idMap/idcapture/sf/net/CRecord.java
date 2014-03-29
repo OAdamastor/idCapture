@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author pierre
+ * @author OAdamastor
  * 
  * Chain of custody enabled record 
  */

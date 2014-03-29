@@ -6,7 +6,7 @@ package idMap.idcapture.sf.net;
 import java.io.Serializable;
 
 /**
- * @author pierre
+ * @author OAdamastor
  *
  */
 public interface IdRecords extends Serializable {
@@ -20,13 +20,10 @@ public interface IdRecords extends Serializable {
 	public void setRecord ( IdField field, CRecord<?> value, AUser user );
 	
 	/*
-	 * Reference membership of Fields to all IdsMaps, as enumerated in IdsWorld.getMapsList();
+	 * Reference membership of IdRecord to all IdsMaps, as enumerated in IdsWorld.getMapsList();
 	 */
 	public int[] isInMapsList();
-	/*
-	 * Reference Key Status of Fields in all IdsMaps, as enumerated in IdsWorld.getMapsList();
-	 */
-	public int[]  isKeyInMapsList();
+	
 	/*
 	 * Reference storage ID to load from specific stores ( if 0, use list index from List Records ) ;
 	 * 

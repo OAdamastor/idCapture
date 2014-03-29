@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author pierre
+ * @author OAdamastor
  *
  */
 public class CRecordSimpleImpl<T> implements CRecord<T> {

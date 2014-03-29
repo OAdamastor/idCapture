@@ -4,7 +4,7 @@
 package idMap.idcapture.sf.net;
 
 /**
- * @author pierre
+ * @author OAdamastor
  *
  */
 public class IdFieldSimpleImpl implements IdField {

@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @author pierre
+ * @author OAdamastor
  *
  */
 public interface IdsMap 
@@ -26,11 +26,11 @@ public interface IdsMap
 	/*
 	 * get Map Key Fields
 	 */
-	public List<IdField> getMapKeys();
+	public List<IdKey> getMapKeys();
 	/*
 	 * get All Map Fields
 	 */
-	public List<IdField> getMapFields();
+	public List<? extends IdField> getMapFields();
 	
 	
 }
