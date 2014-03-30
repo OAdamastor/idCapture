@@ -3,11 +3,11 @@
  */
 package idCapture;
 
+import net.sf.idcapture.idMap.IdWorldSimpleImpl;
+import net.sf.idcapture.idMap.IdsWorld;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
-
-import idMap.idcapture.sf.net.IdWorldSimpleImpl;
-import idMap.idcapture.sf.net.IdsWorld;
 
 /**
  * @author OAdamastor

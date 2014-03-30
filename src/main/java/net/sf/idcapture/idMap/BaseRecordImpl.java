@@ -1,7 +1,7 @@
 /**
  * 
  */
-package idMap.idcapture.sf.net;
+package net.sf.idcapture.idMap;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

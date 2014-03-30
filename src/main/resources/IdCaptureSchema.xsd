@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/IdCaptureSchema" xmlns:tns="http://www.example.org/IdCaptureSchema" elementFormDefault="qualified">
+
+
+    <complexType name="Field">
+    	<sequence>
+    		<element name="name" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="isKey" type="boolean"></element>
+    		<element name="isInMaps" type="string"></element>
+    	</sequence>
+    </complexType>
+</schema>

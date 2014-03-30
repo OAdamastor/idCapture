@@ -1,7 +1,7 @@
 /**
  * 
  */
-package idMap.idcapture.sf.net;
+package net.sf.idcapture.idMap;
 
 /**
  * @author OAdamastor

@@ -46,7 +46,7 @@ public class IdsHashStringMapImplTest {
 	}
 
 	/**
-	 * Test method for {@link idMap.idcapture.sf.net.IdsHashStringMapImpl#IdsHashStringMapImpl(java.util.List, java.util.List, java.util.List, int[])}.
+	 * Test method for {@link net.sf.idcapture.idMap.IdsHashStringMapImpl#IdsHashStringMapImpl(java.util.List, java.util.List, java.util.List, int[])}.
 	 */
 	@Test
 	public final void testIdsHashStringMapImpl() {
@@ -54,7 +54,7 @@ public class IdsHashStringMapImplTest {
 	}
 
 	/**
-	 * Test method for {@link idMap.idcapture.sf.net.IdsHashStringMapImpl#getMapFields()}.
+	 * Test method for {@link net.sf.idcapture.idMap.IdsHashStringMapImpl#getMapFields()}.
 	 */
 	@Test
 	public final void testGetMapFields() {
@@ -62,7 +62,7 @@ public class IdsHashStringMapImplTest {
 	}
 
 	/**
-	 * Test method for {@link idMap.idcapture.sf.net.IdsHashStringMapImpl#getName()}.
+	 * Test method for {@link net.sf.idcapture.idMap.IdsHashStringMapImpl#getName()}.
 	 */
 	@Test
 	public final void testGetName() {

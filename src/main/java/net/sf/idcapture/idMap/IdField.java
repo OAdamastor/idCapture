@@ -1,4 +1,4 @@
-package idMap.idcapture.sf.net;
+package net.sf.idcapture.idMap;
 
 import java.io.Serializable;
 
