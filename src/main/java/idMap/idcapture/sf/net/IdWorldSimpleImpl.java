@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * @author "OAdamastor"
  *
@@ -18,9 +21,11 @@ public class IdWorldSimpleImpl implements IdsWorld {
 	 */
 	private static final long serialVersionUID = 27023578420233977L;
 
+	private static final Logger this_logger = LogManager.getLogger(IdWorldSimpleImpl.class.getName());
+	
 	private List<IdsMap> mapsList ;
-	private List<IdKey> keysList ;
-	private List<? extends IdField> fieldsList ;
+	private List<IdField> keysList ;
+	private List<IdField> fieldsList ;
 	private List<IdRecords> recordsList ;
 	
 	
@@ -32,10 +37,10 @@ public class IdWorldSimpleImpl implements IdsWorld {
 	public IdWorldSimpleImpl() throws Exception {
 		
 	   
-		System.out.println("Log world creation");
+		this_logger.info("Log world creation");
 		/* Create Fields */
 		
-		IdKey stringKey = new IdKeySimpleImpl("idname", 
+		IdField stringKey = new IdFieldSimpleImpl("idname", 
 				String.class, // is a String
 				new int[]{1}, // used as field in map 1
 				new int[]{1}, // used as key in map 1
@@ -43,7 +48,7 @@ public class IdWorldSimpleImpl implements IdsWorld {
 				1, // fieldID
 				0) ; // loading order
 		
-		IdKey stringField = new IdKeySimpleImpl("description", 
+		IdField stringField = new IdFieldSimpleImpl("description", 
 				String.class, // is a String
 				new int[]{1}, // used as field in map 1
 				new int[]{}, // NOT used as key in map 1
@@ -51,7 +56,7 @@ public class IdWorldSimpleImpl implements IdsWorld {
 				1, // fieldID
 				0) ; // loading order
 		
-		IdKey intField = new IdKeySimpleImpl("length", 
+		IdField intField = new IdFieldSimpleImpl("length", 
 				Integer.class, // is a String
 				new int[]{1}, // used as field in map 1
 				new int[]{}, // NOT used as key in map 1
@@ -59,15 +64,30 @@ public class IdWorldSimpleImpl implements IdsWorld {
 				1, // fieldID
 				0) ; // loading order
 		
-		List<IdKey> kList = Arrays.asList( stringKey ) ;
-	    List<? extends IdField> fList = Arrays.asList(stringKey,stringField,intField) ;
+		List<IdField> kList = Arrays.asList( stringKey ) ;
+	    List<IdField> fList = Arrays.asList(stringKey,stringField,intField) ;
 	    
 	    List<IdRecords> recList = new ArrayList<IdRecords>(10);
 	    
-	    /* Create empty IdRecords */
+	    
 		for ( int i = 0 ; i < 6 ; i++   ){
+			/* Create empty IdRecords */
 	        IdRecords rec1  = new IdRecordsSimpleImpl(new int[]{1}, i ) ;
-	    	recList.add(rec1);
+	        
+	        /* Generate a pseudo string key */
+	        CRecord<String> recString = new CRecordSimpleImpl<String>("rec_"+i);
+	        rec1.setRecord(stringKey, recString, null);
+	    	 /* Populate a data string field */
+	    	CRecord<String> recString2 = new CRecordSimpleImpl<String>("data_"+i);
+		        rec1.setRecord(stringField, recString2, null);
+		    /* Populate a data string field */
+		    CRecord<Integer> recInteger = new CRecordSimpleImpl<Integer>( 125 * i );
+			        rec1.setRecord(intField, recInteger, null);
+			    	
+		    	
+		    /* Add new Id Records to the list */
+		    recList.add(rec1);
+		    	
 		}
 	    
 		// Create Map
@@ -81,14 +101,18 @@ public class IdWorldSimpleImpl implements IdsWorld {
 		this.keysList = kList ;
 		this.recordsList = recList ;
 		this.mapsList = mList ;
-		System.out.println("end world creation");
+		this_logger.info("end world creation");
+		this_logger.info("nomber of records in Map 1 = " + idMap.size() );
+		
+		this_logger.info(("data integer field for Map 1, Idrecord rec_4, integer ="  
+				 + idMap.get("rec_4").getRecordValue(intField) ) );
 		
 	}
 
 	/* (non-Javadoc)
 	 * @see idMap.idcapture.sf.net.IdsWorld#getFields()
 	 */
-	public List<? extends IdField> getFields() {
+	public List<IdField> getFields() {
 		
 		return this.fieldsList;
 	}

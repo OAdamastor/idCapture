@@ -3,6 +3,9 @@
  */
 package idCapture;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
+
 import idMap.idcapture.sf.net.IdWorldSimpleImpl;
 import idMap.idcapture.sf.net.IdsWorld;
 
@@ -27,6 +30,8 @@ public class TestRun0 {
 
 		
 		System.out.println("Hello");
+		
+		
 		try {
 			IdsWorld myworld = new IdWorldSimpleImpl();
 		} catch (Exception e) {
