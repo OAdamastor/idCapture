@@ -43,7 +43,7 @@ public class IdsHashStringMapImpl
     	/* Save fields reference internally */
     	this.mapFieldsName = new HashMap<String,IdField>(10);
     	// No duplicate checks 
-    	for ( IdField f : fields ) this.mapFieldsName.put(f.getName(), f ) ;
+    	for ( IdField f : fields ) this.mapFieldsName.put(f.getFieldName(), f ) ;
     	//this.mapFields = fields;
     	
     	/* Save map Name reference */
@@ -71,12 +71,12 @@ public class IdsHashStringMapImpl
     			
     				
     				this_logger.debug("mapindex, m = " + m);
-    				this_logger.debug("keyfield name = " + keyField.getName() ) ;
-    				this_logger.debug("keyfield = " + keyField.getFieldClass().toString() ) ;
+    				this_logger.debug("keyfield name = " + keyField.getFieldName() ) ;
+    				this_logger.debug("keyfield = " + keyField.getClassReference().toString() ) ;
     				
     				
     	          /* Call key field : force loading*/
-    	         if ( keyField.getFieldClass().equals(String.class)  ){ 
+    	         if ( keyField.getClassReference().equals(String.class)  ){ 
     	        	 
     				CRecord<String> keyRecord = (CRecord<String>) rec.getRecord(keyField);
     				   /* Use Key field in mapping */

@@ -3,9 +3,12 @@
  */
 package net.sf.idcapture.idMap;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.xml.bind.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -65,8 +68,12 @@ public class IdWorldSimpleImpl implements IdsWorld {
 				0) ; // loading order
 		
 		List<IdField> kList = Arrays.asList( stringKey ) ;
-	    List<IdField> fList = Arrays.asList(stringKey,stringField,intField) ;
 	    
+		//List<IdField> fList = Arrays.asList(stringKey,stringField,intField) ;
+	    
+		this.readXMLFields();
+		List<IdField> fList = this.fieldsList ;
+		
 	    List<IdRecords> recList = new ArrayList<IdRecords>(10);
 	    
 	    
@@ -106,6 +113,8 @@ public class IdWorldSimpleImpl implements IdsWorld {
 		
 		this_logger.info(("data integer field for Map 1, Idrecord rec_4, integer ="  
 				 + idMap.get("rec_4").getRecordValue(intField) ) );
+		
+		saveFieldsDefinition();
 		
 	}
 
@@ -157,6 +166,82 @@ public class IdWorldSimpleImpl implements IdsWorld {
 	public List<IdRecords> getIds() {
 		
 		return recordsList ;
+	}
+	
+	private void saveFieldsDefinition() throws JAXBException{
+		
+		/*
+		IdField stringKey = new IdFieldSimpleImpl("idname", 
+				String.class, // is a String
+				new int[]{1}, // used as field in map 1
+				new int[]{1}, // used as key in map 1
+				0, // storeSID
+				1, // fieldID
+				0) ; // loading order
+		*/
+		IdFieldSimpleImpl stringKey = new IdFieldSimpleImpl("idname", 
+				String.class, // is a String
+				new int[]{1}, // used as field in map 1
+				new int[]{1}, // used as key in map 1
+				0, // storeSID
+				1, // fieldID
+				0) ; // loading order
+		
+		IdFieldSimpleImpl stringField = new IdFieldSimpleImpl("description", 
+				String.class, // is a String
+				new int[]{1}, // used as field in map 1
+				new int[]{}, // NOT used as key in map 1
+				0, // storeSID
+				1, // fieldID
+				0) ; // loading order
+		
+		IdFieldSimpleImpl intField = new IdFieldSimpleImpl("length", 
+				Integer.class, // is a String
+				new int[]{1}, // used as field in map 1
+				new int[]{}, // NOT used as key in map 1
+				0, // storeSID
+				1, // fieldID
+				0) ; // loading order
+		
+		List<IdFieldSimpleImpl> locList = Arrays.asList(stringKey,stringField,intField) ;
+	   
+		
+		  IdFieldsList flist = new IdFieldsList() ;
+		  flist.setFields(locList);
+		
+		  JAXBContext context = JAXBContext.newInstance( IdFieldsList.class ) ;
+		    
+		  // création d'un marshaller à partir de ce contexte
+		  Marshaller marshaller = context.createMarshaller() ;
+		    
+		     // on choisit UTF-8 pour encoder ce fichier
+		    marshaller.setProperty("jaxb.encoding",  "UTF-8") ;
+		     // et l'on demande à JAXB de formatter ce fichier de façon 
+		     // à pouvoir le lire à l'oeil nu
+		    marshaller.setProperty("jaxb.formatted.output", true) ;
+		    
+		     // écriture finale du document XML dans un fichier surcouf.xml
+		    marshaller.marshal( flist ,  new File("fields.xml")) ;
+	}
+	
+	
+	
+	private void readXMLFields() throws JAXBException{
+		
+		  // création d'un contexte JAXB sur la classe Marin
+	    JAXBContext context = JAXBContext.newInstance(IdFieldsList.class ) ;
+	    
+	     // création d'un unmarshaller
+	    Unmarshaller unmarshaller = context.createUnmarshaller() ;
+	    IdFieldsList flist = ( IdFieldsList )  unmarshaller.unmarshal(new File("fields.xml")) ;
+	    
+	    List<IdFieldSimpleImpl> locList = flist.getFields() ;
+	    
+	    this.fieldsList = new ArrayList<IdField>();
+	    this.fieldsList.addAll( locList ) ;
+	    
+	    
+		
 	}
 
 }

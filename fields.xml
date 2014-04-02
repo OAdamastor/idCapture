@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<fieldsList>
+    <fields>
+        <classReference>java.lang.String</classReference>
+        <fieldID>1</fieldID>
+        <fieldName>idname</fieldName>
+        <inMapsList>1</inMapsList>
+        <keyInMapsList>1</keyInMapsList>
+        <loadingPriority>0</loadingPriority>
+        <storeSID>0</storeSID>
+    </fields>
+    <fields>
+        <classReference>java.lang.String</classReference>
+        <fieldID>1</fieldID>
+        <fieldName>description</fieldName>
+        <inMapsList>1</inMapsList>
+        <loadingPriority>0</loadingPriority>
+        <storeSID>0</storeSID>
+    </fields>
+    <fields>
+        <classReference>java.lang.Integer</classReference>
+        <fieldID>1</fieldID>
+        <fieldName>length</fieldName>
+        <inMapsList>1</inMapsList>
+        <loadingPriority>0</loadingPriority>
+        <storeSID>0</storeSID>
+    </fields>
+</fieldsList>

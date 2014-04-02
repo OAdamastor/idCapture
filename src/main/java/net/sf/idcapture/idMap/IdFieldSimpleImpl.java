@@ -3,10 +3,13 @@
  */
 package net.sf.idcapture.idMap;
 
+import javax.xml.bind.annotation.*;
+
 /**
  * @author OAdamastor
  *
  */
+@XmlRootElement(name= "fieldType" )
 public class IdFieldSimpleImpl implements IdField {
 
 	
@@ -15,14 +18,36 @@ public class IdFieldSimpleImpl implements IdField {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	String fieldName ;
-	Class<?> classReference ;
-	int[] inMapsList ;
-	int[] keyInMapsList ;
-	int storeSID ;
-	int fieldID ;
-	int loadingPriority ;
+	
+	@XmlElement
+	private String testfield ;
+	
+	
+	
+	private String fieldName ;
+	
+	
+	private Class<?> classReference ;
+	
+	
+	private int[] inMapsList ;
+	
+	
+	private int[] keyInMapsList ;
+	
+	
+	private int storeSID ;
+	
+	
+	private int fieldID ;
+	private int loadingPriority ;
 
+	public IdFieldSimpleImpl( ) {
+		
+		
+		
+	}
+	
 	/**
 	 * Constructor of immutable objects : 
 	 * pending : how to add / remove fiel/maps mappings 
@@ -41,62 +66,69 @@ public class IdFieldSimpleImpl implements IdField {
 		
 	}
 
+	public String getFieldName() {
+		return fieldName;
+	}
+
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
+	}
+
+	public Class<?> getClassReference() {
+		return classReference;
+	}
+
+	public void setClassReference(Class<?> classReference) {
+		this.classReference = classReference;
+	}
+
+	public int[] getInMapsList() {
+		return inMapsList;
+	}
+
+	public void setInMapsList(int[] inMapsList) {
+		this.inMapsList = inMapsList;
+	}
+
+	public int[] getKeyInMapsList() {
+		return keyInMapsList;
+	}
+
+	public void setKeyInMapsList(int[] keyInMapsList) {
+		this.keyInMapsList = keyInMapsList;
+	}
+
+	public int getStoreSID() {
+		return storeSID;
+	}
+
+	public void setStoreSID(int storeSID) {
+		this.storeSID = storeSID;
+	}
+
+	public int getFieldID() {
+		return fieldID;
+	}
+
+	public void setFieldID(int fieldID) {
+		this.fieldID = fieldID;
+	}
+
+	public int getLoadingPriority() {
+		return loadingPriority;
+	}
+
+	public void setLoadingPriority(int loadingPriority) {
+		this.loadingPriority = loadingPriority;
+	}
+
+	
+	
 	/* (non-Javadoc)
 	 * @see idMap.idcapture.sf.net.IdField#getFieldClass()
 	 */
 	
 	
-	public Class<?> getFieldClass() {
-		
-		return this.classReference ;
-	}
-
-	/* (non-Javadoc)
-	 * @see idMap.idcapture.sf.net.IdField#getName()
-	 */
-	public String getName() {
-		
-		return this.fieldName;
-	}
-
-	/* (non-Javadoc)
-	 * @see idMap.idcapture.sf.net.IdField#isInMapsList()
-	 */
-	public int[] isInMapsList() {
-		
-		return inMapsList ;
-	}
-
-	/* (non-Javadoc)
-	 * @see idMap.idcapture.sf.net.IdField#isKeyInMapsList()
-	 */
-	public int[] isKeyInMapsList() {
-		
-		return keyInMapsList ;
-	}
-
-	/* (non-Javadoc)
-	 * @see idMap.idcapture.sf.net.IdField#storeSID()
-	 */
-	public int storeSID() {
-		
-		return this.storeSID ;
-	}
-
-	/* (non-Javadoc)
-	 * @see idMap.idcapture.sf.net.IdField#fieldID()
-	 */
-	public int fieldID() {
 	
-		return this.fieldID ;
-	}
-
-	/* (non-Javadoc)
-	 * @see idMap.idcapture.sf.net.IdField#loadingPriority()
-	 */
-	public int loadingPriority() {
-		
-		return this.loadingPriority ;
-	}
 
 }

@@ -7,37 +7,37 @@ public interface IdField extends Serializable {
 	/*
 	 * Data Class
 	 */
-	public Class<?> getFieldClass();
+	public Class<?> getClassReference();
 	
 	/*
 	 *  Field name as Key in map of Fields.
 	 */
-	public String getName();
+	public String getFieldName();
 	
 	/*
 	 * Reference membership of Fields to all IdsMaps, as enumerated in IdsWorld.getMapsList();
 	 */
-	public int[] isInMapsList();
+	public int[] getInMapsList();
 	/*
 	 * Reference Key Status of Fields in all IdsMaps, as enumerated in IdsWorld.getMapsList();
 	 */
-	public int[]  isKeyInMapsList();
+	public int[]  getKeyInMapsList();
 	
 	/*
 	 * Reference storage domain System SID for specific fields ;
 	 * AKA loading group if same storage domain
 	 */
-	public int storeSID();
+	public int getStoreSID();
 	
 	/*
 	 * Reference storage field SID for specific fields ;
 	 * data address x idRecords Id
 	 */
-	public int fieldID();
+	public int getFieldID();
 	
 	/*
 	 * Reference loading priority in applications
 	 */
-	public int loadingPriority();
+	public int getLoadingPriority();
 	
 }
