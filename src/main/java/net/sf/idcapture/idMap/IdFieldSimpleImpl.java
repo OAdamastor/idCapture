@@ -66,6 +66,8 @@ public class IdFieldSimpleImpl implements IdField {
 		
 	}
 
+	
+	
 	public String getFieldName() {
 		return fieldName;
 	}
@@ -120,6 +122,43 @@ public class IdFieldSimpleImpl implements IdField {
 
 	public void setLoadingPriority(int loadingPriority) {
 		this.loadingPriority = loadingPriority;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((fieldName == null) ? 0 : fieldName.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof IdFieldSimpleImpl)) {
+			return false;
+		}
+		IdFieldSimpleImpl other = (IdFieldSimpleImpl) obj;
+		if (fieldName == null) {
+			if (other.fieldName != null) {
+				return false;
+			}
+		} else if (!fieldName.equals(other.fieldName)) {
+			return false;
+		}
+		return true;
 	}
 
 	

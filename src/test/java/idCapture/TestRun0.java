@@ -33,7 +33,7 @@ public class TestRun0 {
 		
 		
 		try {
-			IdsWorld myworld = new IdWorldSimpleImpl();
+			IdsWorld myworld = new IdWorldSimpleImpl(1);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

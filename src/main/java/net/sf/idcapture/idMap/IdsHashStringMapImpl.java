@@ -33,7 +33,6 @@ public class IdsHashStringMapImpl
 	
 	/* Create on Map */
     public IdsHashStringMapImpl ( 
-    		List<IdField> keys, // no key indexes : single key
     		List<IdField> fields, // no field indexes : all fields used in map
     		List<IdRecords> idRecords,
     		// world list of records, each records keep map membership information
@@ -49,13 +48,35 @@ public class IdsHashStringMapImpl
     	/* Save map Name reference */
     	this.mapName = name ;
     	
+    	
+    	
     	/* 
     	 * Check keys list size = 1 , 
     	 * if not error */
+    	this.keyField = null ;
+    	for ( IdField f : fields ){
+    		
+    		if ( f.getKeyInMapsList() != null )
+    	    for  (int i : f.getKeyInMapsList() ){
+    	    	
+    	    	if ( mapIndex == i  ){
+    	    		// this field is key in this map
+    	    		if ( this.keyField != null )
+    	    			throw new Exception("Impossible to create IdsHashStringMapImpl with zero or multiple keys fields") ; 
+    	    		this.keyField = f ;
+    	    		break ;
+    	    	}
+    	    	/* exit loop */
+    	    	if ( this.keyField != null ) break ;
+    	    }
+    		
+    	}
+    	/*
     	if ( keys.size() != 1 ) 
     			throw new Exception("Impossible to create IdsHashStringMapImpl with zero or multiple keys fields") ; 
     	else this.keyField = keys.get(0);
-		
+		*/
+    	
     	/* -----   Build mappings ----- */
     	
     	/* iterate over records */
@@ -80,6 +101,11 @@ public class IdsHashStringMapImpl
     	        	 
     				CRecord<String> keyRecord = (CRecord<String>) rec.getRecord(keyField);
     				   /* Use Key field in mapping */
+    				if ( keyRecord == null)
+    					this_logger.debug("keyValue is null " );
+    				else
+    					this_logger.debug("keyValue = " +  keyRecord.getValue() );
+    				
        	            this.put(keyRecord.getValue(),rec);
        	            this_logger.debug("keyRecord Value = " + keyRecord.getValue() ) ;
     	         }

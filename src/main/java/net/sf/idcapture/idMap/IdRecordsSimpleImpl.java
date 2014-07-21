@@ -4,11 +4,15 @@
 package net.sf.idcapture.idMap;
 
 import java.util.HashMap;
+import javax.xml.bind.annotation.*;
 
 /**
  * @author OAdamastor
  *
  */
+@XmlRootElement(name="id")
+@XmlAccessorType( XmlAccessType.FIELD)
+
 public class IdRecordsSimpleImpl  
             extends HashMap<IdField ,CRecord<?> > 
             implements IdRecords{
@@ -24,6 +28,17 @@ public class IdRecordsSimpleImpl
 	/**
 	 * 
 	 */
+	/**
+	 * 
+	 */
+	public IdRecordsSimpleImpl( ) {
+		
+		this.inMapsList = null ;
+		this.sID = -1 ;
+		
+	}
+	
+	
 	public IdRecordsSimpleImpl(
 			int[] f_inMapsList,
 			int f_sID ) {
